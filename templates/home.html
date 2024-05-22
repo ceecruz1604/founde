@@ -1,0 +1,28 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        /* Inline CSS for simplicity */
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 400px; margin: 0 auto; }
+        .welcome { margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome</h2>
+        <div class="welcome">
+            {% if 'username' in session %}
+                <p>Welcome, {{ session['username'] }}!</p>
+                <a href="{{ url_for('logout.logout') }}">Logout</a>
+            {% else %}
+                <p>You are not logged in.</p>
+                <a href="{{ url_for('signin.signin') }}">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
